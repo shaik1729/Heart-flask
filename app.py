@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from flask.templating import _render
 import numpy as np
 import pickle
 
@@ -8,8 +9,17 @@ from werkzeug.utils import redirect
 app = Flask(__name__)
 model = pickle.load(open('Heart.pkl', 'rb'))
 
-@app.route('/',methods=['GET'])
+@app.route('/home', methods=['GET'])
+@app.route('/', methods=['GET'])
 def Home():
+    return render_template('home.html')
+
+@app.route('/graph', methods=['GET'])
+def graph():
+    return render_template('graph.html')
+
+@app.route('/index',methods=['GET'])
+def Index():
     return render_template('index.html')
 
 @app.route("/predict", methods=['POST'])

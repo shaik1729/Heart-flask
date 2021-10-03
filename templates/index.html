@@ -1,283 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Heart Prediction Model</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <h1 class="container-heading">
-        <span class="heading_font">Heart Disease Prediction</span>
-      </h1>
-    </div>
+{% extends 'base.html' %}
+{% block content %}
+<section>
+  <div class="ml-container form-container">
+    <form action="{{ url_for('predict') }}" method="POST">
+      <br />
+      <div class="filed control">
+        <div class="field control">
+          <lable>Age</lable>
+          <input id="first" name="age" placeholder="in Year" required="required" />
+        </div>
 
-    <div class="ml-container">
-      <form action="{{ url_for('predict') }}" method="POST">
         <br />
-        <h2>Age</h2>
-        <input
-          id="first"
-          name="age"
-          placeholder="in Year"
-          required="required"
-        />
-        <br />
-        <h2>Sex</h2>
-        <input
-          id="second"
-          name="sex"
-          placeholder="Male = 1, Female=0"
-          required="required"
-        />
-        <br />
-        <h2>Chest Pain Type</h2>
-        <input
-          id="third"
-          name="cp"
-          placeholder="Ex: 1,2,3,4"
-          required="required"
-        />
-        <br />
-        <h2>Resting Blood Pressure</h2>
-        <input
-          id="fourth"
-          name="trestbps"
-          placeholder="(mm)"
-          required="required"
-        />
-        <br />
-        <h2>Serum Cholestoral</h2>
-        <input
-          id="fifth"
-          name="chol"
-          placeholder="(mg/dl)"
-          required="required"
-        />
-        <br />
-        <h2>fasting blood sugar > 120 mg/dl</h2>
-        <input
-          id="sixth"
-          name="fbs"
-          placeholder="(1 = true; 0 = false)"
-          required="required"
-        />
-        <br />
-        <h2>Resting Electrocardiographic Results</h2>
-        <input
-          id="seventh"
-          name="restecg"
-          placeholder="(values 0,1,2)"
-          required="required"
-        />
-        <br />
-        <h2>Maximum Heart Rate Achieved</h2>
-        <input
-          id="eight"
-          name="thalach"
-          placeholder="Maximum Heart Rate Achieved"
-          required="required"
-        />
-        <br />
-        <h2>Exercise Induced Angina</h2>
-        <input
-          id="ninth"
-          name="exang"
-          placeholder="(1 = yes; 0 = no)"
-          required="required"
-        />
-        <br />
-        <h2>Oldpeak</h2>
-        <input
-          id="tenth"
-          name="oldpeak"
-          placeholder="ST depression induced by exercise relative to rest"
-          required="required"
-        />
-        <br />
-        <h2>Slope</h2>
-        <input
-          id="eleventh"
-          name="slope"
-          placeholder="Peak Exercise ST segment"
-          required="required"
-        />
-        <br />
-        <h2>CA</h2>
-        <input
-          id="twelfth"
-          name="ca"
-          placeholder="No. of major vessels 0-3 colored by flourosopy"
-          required="required"
-        />
-        <br />
-        <h2>Thal</h2>
-        <input
-          id="thirteenth"
-          name="thal"
-          placeholder="0=Normal; 1=FixedDefect; 2=ReversableDefect"
-          required="required"
-        />
-        <br />
-        <br />
-        <button id="sub" type="submit ">Submit</button>
-        <br />
-        <br />
-        <p class="footer-description">©2021 RR</p>
-      </form>
-    </div>
+        <div class="filed control">
+          <div class="field control">
 
-    <style>
-      /* Background Image */
-      body {
-        background-image: url("https://clipart.info/images/ccovers/1484751735heart-png-with-life-line.png");
-        height: 100%;
+            <lable>Sex</lable>
+            <input id="second" name="sex" placeholder="Male = 1, Female=0" required="required" />
+          </div>
+          <br />
+          <div class="filed control">
+            <lable>Chest Pain Type</lable>
+            <input id="third" name="cp" placeholder="Ex: 1,2,3,4" required="required" />
+          </div>
+          <br />
 
-        /* Center and scale the image nicely */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-color: rgb(230 36 36 / 96%);
-      }
-
-      /* Color */
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* Heading Font */
-      .container-heading {
-        margin: 0;
-      }
-
-      .heading_font {
-        color: black;
-        font-family: "Pacifico", cursive;
-        font-size: 50px;
-        font-weight: normal;
-      }
-
-      /* Box */
-      #first {
-        border-radius: 14px;
-        height: 25px;
-        width: 150px;
-        font-size: 20px;
-        text-align: center;
-      }
-
-      #second {
-        border-radius: 14px;
-        height: 25px;
-        font-size: 20px;
-        text-align: center;
-      }
-
-      #third {
-        border-radius: 14px;
-        height: 25px;
-        width: 150px;
-        font-size: 20px;
-        text-align: center;
-      }
-
-      #fourth {
-        border-radius: 14px;
-        height: 25px;
-        width: 150px;
-        font-size: 20px;
-        text-align: center;
-      }
-
-      #fifth {
-        border-radius: 14px;
-        height: 25px;
-        width: 150px;
-        font-size: 20px;
-        text-align: center;
-      }
-
-      #sixth {
-        border-radius: 14px;
-        height: 25px;
-        width: 200px;
-        font-size: 20px;
-        text-align: center;
-      }
-
-      #seventh {
-        border-radius: 14px;
-        height: 25px;
-        width: 200px;
-        font-size: 20px;
-        text-align: center;
-      }
-
-      #eight {
-        border-radius: 14px;
-        height: 25px;
-        width: 300px;
-        font-size: 20px;
-        text-align: center;
-      }
-
-      #ninth {
-        border-radius: 14px;
-        height: 25px;
-        width: 200px;
-        font-size: 20px;
-        text-align: center;
-      }
-
-      #tenth {
-        border-radius: 14px;
-        height: 25px;
-        width: 450px;
-        font-size: 20px;
-        text-align: center;
-      }
-
-      #eleventh {
-        border-radius: 14px;
-        height: 25px;
-        font-size: 20px;
-        text-align: center;
-      }
-
-      #twelfth {
-        border-radius: 14px;
-        height: 25px;
-        width: 430px;
-        font-size: 20px;
-        text-align: center;
-      }
-
-      #thirteenth {
-        border-radius: 14px;
-        height: 25px;
-        width: 440px;
-        font-size: 20px;
-        text-align: center;
-      }
-
-      /* Submit Button */
-      #sub {
-        width: 120px;
-        height: 43px;
-        text-align: center;
-        border-radius: 14px;
-        font-size: 18px;
-      }
-    </style>
-  </body>
-</html>
+          <div class="filed control">
+            <lable>Resting Blood Pressure</lable>
+            <input id="fourth" name="trestbps" placeholder="(mm)" required="required" />
+          </div>
+          <br />
+          <div class="filed control">
+            <lable>Serum Cholestoral</lable>
+            <input id="fifth" name="chol" placeholder="(mg/dl)" required="required" />
+          </div>
+          <br />
+          <div class="filed control">
+            <lable>fasting blood sugar > 120 mg/dl</lable>
+            <input id="sixth" name="fbs" placeholder="(1 = true; 0 = false)" required="required" />
+          </div>
+          <br />
+          <div class="filed control">
+            <lable>Resting Electrocardiographic Results</lable>
+            <input id="seventh" name="restecg" placeholder="(values 0,1,2)" required="required" />
+          </div>
+          <br />
+          <div class="filed control">
+            <lable>Maximum Heart Rate Achieved</lable>
+            <input id="eight" name="thalach" placeholder="Maximum Heart Rate Achieved" required="required" />
+          </div>
+          <br />
+          <div class="filed control">
+            <lable>Exercise Induced Angina</lable>
+            <input id="ninth" name="exang" placeholder="(1 = yes; 0 = no)" required="required" />
+          </div>
+          <br />
+          <div class="filed control">
+            <lable>Oldpeak</lable>
+            <input id="tenth" name="oldpeak" placeholder="ST depression induced by exercise relative to rest"
+              required="required" />
+          </div>
+          <br />
+          <div class="filed control">
+            <lable>Slope</lable>
+            <input id="eleventh" name="slope" placeholder="Peak Exercise ST segment" required="required" />
+          </div>
+          <br />
+          <div class="filed control">
+            <lable>CA</lable>
+            <input id="twelfth" name="ca" placeholder="No. of major vessels 0-3 colored by flourosopy"
+              required="required" />
+          </div>
+          <br />
+          <div class="filed control">
+            <lable>Thal</lable>
+            <input id="thirteenth" name="thal" placeholder="0=Normal; 1=FixedDefect; 2=ReversableDefect"
+              required="required" />
+          </div>
+          <br />
+          <div class="filed control">
+            <button id="sub" type="submit ">Submit</button>
+            <br />
+            <div class="filed control">
+              <center>
+                <footer>
+                  <p class="footer-description">©2021 RR</p>
+                </footer>
+              </center>
+            </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

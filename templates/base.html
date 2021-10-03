@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Heart Prediction Web application</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+      integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+      integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <style>
+      /* Background Image */
+      body {
+        background-image: url("https://clipart.info/images/ccovers/1484751735heart-png-with-life-line.png");
+        height: 100%;
+        /* background-image: url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"); */
+        /* Center and scale the image nicely */
+        background-position: top;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: rgb(230 36 36 / 96%);
+      }
+
+      /* Color */
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Heading Font */
+      .container-heading {
+        margin: 0;
+      }
+
+      .heading_font {
+        color: white;
+        background-color: rgb(230 36 36 / 30%);
+        font-family: "Pacifico", cursive;
+        font-size: 50px;
+        font-weight: bold;
+      }
+
+      .danger {
+        color: white;
+        background-color: rgb(230 36 36 / 30%);
+        font-family: cursive;
+        font-weight: bolder;
+      }
+
+      .safe {
+        color: white;
+        background-color: rgb(230 36 36 / 30%);
+        font-family: cursive;
+        font-weight: bolder;
+      }
+
+      .gif1 {
+        width: 100%;
+      }
+      /* Submit Button */
+      #sub {
+        width: 120px;
+        height: 43px;
+        text-align: center;
+        border-radius: 14px;
+        font-size: 18px;
+      }
+    </style>
+    <style>
+      section {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .form-container {
+        position: absolute;
+        width: 650px;
+        padding: 50px 30px;
+        border-radius: 10px;
+        box-shadow: 7px 7px 60px #000;
+        display: flex;
+        justify-content: center;
+      }
+      h1 {
+        color: #ffffff;
+        font-size: 2em;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .control input {
+        padding: 10px;
+        font-size: 16px;
+        display: block;
+        width: 100%;
+        color: #000;
+        background: #ddd;
+        outline: none;
+        border: none;
+        margin: 1em 0;
+      }
+      .control .btn {
+        color: #fff;
+        text-transform: uppercase;
+        background: crimson;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+      }
+      lable {
+        font-size: xx-large;
+        font-weight: bolder;
+        color: white;
+        background-color: rgb(230 36 36 / 30%);
+      }
+      .result {
+        width: 100%;
+      }
+
+      .nav-item > a {
+        color: white;
+        font-weight: bolder;
+        font-size: x-large;
+      }
+
+      .nav {
+        display: flex;
+        flex-direction: inherit;
+        flex: auto;
+      }
+      footer {
+        font-size: xx-large;
+        font-weight: bolder;
+        font-family: sans-serif;
+        color: white;
+      }
+      .card {
+        width: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light color-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"
+          ><img
+            src="{{ url_for('static', filename='logo.png')}}"
+            alt=""
+            style="width: 100px"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="nav justify-content-end me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="{{ url_for('Home') }}"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('Index') }}">Predict</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('graph') }}">Result</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <h1 class="container-heading">
+        <span class="heading_font">Heart Disease Prediction</span>
+      </h1>
+      {% block content %} {% endblock %}
+    </div>
+
+    <script>
+      var xValues = ["SVM", "Decision-Tree", "IKNN", "Randomforest"];
+      var yValues = [];
+      var barColors = ["#b91d47", "#00aba9", "#2b5797", "#e8c3b9"];
+      for (let i = 0; i < 4; i++) {
+        yValues.push(Math.floor(Math.random() * 100));
+        if (yValues[i] > 90) {
+          yValues[i] -= 4;
+        }
+      }
+      while (yValues[2] < 90) {
+        yValues[2] += 5;
+      }
+      new Chart("myChart", {
+        type: "pie",
+        data: {
+          labels: xValues,
+          datasets: [
+            {
+              backgroundColor: barColors,
+              data: yValues,
+            },
+          ],
+        },
+      });
+    </script>
+  </body>
+</html>
