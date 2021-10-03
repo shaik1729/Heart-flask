@@ -3,18 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <title>Heart Prediction Model</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
     <div class="container">
-      <h2 class="container-heading">
+      <h1 class="container-heading">
         <span class="heading_font">Heart Disease Prediction</span>
-      </h2>
+      </h1>
     </div>
 
     <div class="ml-container">
       <form action="{{ url_for('predict') }}" method="POST">
         <br />
-        <h3>Age</h3>
+        <h2>Age</h2>
         <input
           id="first"
           name="age"
@@ -22,7 +26,7 @@
           required="required"
         />
         <br />
-        <h3>Sex</h3>
+        <h2>Sex</h2>
         <input
           id="second"
           name="sex"
@@ -30,7 +34,7 @@
           required="required"
         />
         <br />
-        <h3>Chest Pain Type</h3>
+        <h2>Chest Pain Type</h2>
         <input
           id="third"
           name="cp"
@@ -38,7 +42,7 @@
           required="required"
         />
         <br />
-        <h3>Resting Blood Pressure</h3>
+        <h2>Resting Blood Pressure</h2>
         <input
           id="fourth"
           name="trestbps"
@@ -46,7 +50,7 @@
           required="required"
         />
         <br />
-        <h3>Serum Cholestoral</h3>
+        <h2>Serum Cholestoral</h2>
         <input
           id="fifth"
           name="chol"
@@ -54,7 +58,7 @@
           required="required"
         />
         <br />
-        <h3>fasting blood sugar > 120 mg/dl</h3>
+        <h2>fasting blood sugar > 120 mg/dl</h2>
         <input
           id="sixth"
           name="fbs"
@@ -62,7 +66,7 @@
           required="required"
         />
         <br />
-        <h3>Resting Electrocardiographic Results</h3>
+        <h2>Resting Electrocardiographic Results</h2>
         <input
           id="seventh"
           name="restecg"
@@ -70,7 +74,7 @@
           required="required"
         />
         <br />
-        <h3>Maximum Heart Rate Achieved</h3>
+        <h2>Maximum Heart Rate Achieved</h2>
         <input
           id="eight"
           name="thalach"
@@ -78,7 +82,7 @@
           required="required"
         />
         <br />
-        <h3>Exercise Induced Angina</h3>
+        <h2>Exercise Induced Angina</h2>
         <input
           id="ninth"
           name="exang"
@@ -86,7 +90,7 @@
           required="required"
         />
         <br />
-        <h3>Oldpeak</h3>
+        <h2>Oldpeak</h2>
         <input
           id="tenth"
           name="oldpeak"
@@ -94,7 +98,7 @@
           required="required"
         />
         <br />
-        <h3>Slope</h3>
+        <h2>Slope</h2>
         <input
           id="eleventh"
           name="slope"
@@ -102,7 +106,7 @@
           required="required"
         />
         <br />
-        <h3>CA</h3>
+        <h2>CA</h2>
         <input
           id="twelfth"
           name="ca"
@@ -110,7 +114,7 @@
           required="required"
         />
         <br />
-        <h3>Thal</h3>
+        <h2>Thal</h2>
         <input
           id="thirteenth"
           name="thal"
@@ -127,165 +131,153 @@
     </div>
 
     <style>
-
       /* Background Image */
-      body
-      {
-      background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHsy5yvcoE_OCVutfH8lE87_2eD7NkyMfToA&usqp=CAU");
-      height: 100%;
+      body {
+        background-image: url("https://clipart.info/images/ccovers/1484751735heart-png-with-life-line.png");
+        height: 100%;
 
-      /* Center and scale the image nicely */
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: rgb(230 36 36 / 96%);
       }
 
       /* Color */
-      body{
-      	font-family: Arial, Helvetica,sans-serif;
-          text-align: center;
-          margin: 0;
-          padding: 0;
-          width: 100%;
-      	height: 100%;
-      	display: flex;
-      	flex-direction: column;
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
       }
-
 
       /* Heading Font */
-      .container-heading{
-          margin: 0;
+      .container-heading {
+        margin: 0;
       }
 
-      .heading_font{
-          color: black;
-      	font-family: 'Pacifico', cursive;
-      	font-size: 50px;
-      	font-weight: normal;
+      .heading_font {
+        color: black;
+        font-family: "Pacifico", cursive;
+        font-size: 50px;
+        font-weight: normal;
       }
-
-
 
       /* Box */
-              #first {
-                  border-radius: 14px;
-                  height: 25px;
-                  width: 150px;
-                  font-size: 20px;
-                  text-align: center;
-              }
+      #first {
+        border-radius: 14px;
+        height: 25px;
+        width: 150px;
+        font-size: 20px;
+        text-align: center;
+      }
 
-              #second {
-                  border-radius: 14px;
-                  height: 25px;
-                  font-size: 20px;
-                  text-align: center;
-              }
+      #second {
+        border-radius: 14px;
+        height: 25px;
+        font-size: 20px;
+        text-align: center;
+      }
 
-              #third {
-                  border-radius: 14px;
-                  height: 25px;
-                  width: 150px;
-                  font-size: 20px;
-                  text-align: center;
-              }
+      #third {
+        border-radius: 14px;
+        height: 25px;
+        width: 150px;
+        font-size: 20px;
+        text-align: center;
+      }
 
-              #fourth {
-                  border-radius: 14px;
-                  height: 25px;
-                  width: 150px;
-                  font-size: 20px;
-                  text-align: center;
-              }
+      #fourth {
+        border-radius: 14px;
+        height: 25px;
+        width: 150px;
+        font-size: 20px;
+        text-align: center;
+      }
 
-              #fifth {
-                  border-radius: 14px;
-                  height: 25px;
-                  width: 150px;
-                  font-size: 20px;
-                  text-align: center;
-              }
+      #fifth {
+        border-radius: 14px;
+        height: 25px;
+        width: 150px;
+        font-size: 20px;
+        text-align: center;
+      }
 
-              #sixth {
-                  border-radius: 14px;
-                  height: 25px;
-                  width: 200px;
-                  font-size: 20px;
-                  text-align: center;
-              }
+      #sixth {
+        border-radius: 14px;
+        height: 25px;
+        width: 200px;
+        font-size: 20px;
+        text-align: center;
+      }
 
-              #seventh {
-                  border-radius: 14px;
-                  height: 25px;
-                  width: 200px;
-                  font-size: 20px;
-                  text-align: center;
-              }
+      #seventh {
+        border-radius: 14px;
+        height: 25px;
+        width: 200px;
+        font-size: 20px;
+        text-align: center;
+      }
 
-              #eight {
-                  border-radius: 14px;
-                  height: 25px;
-                  width: 300px;
-                  font-size: 20px;
-                  text-align: center;
-              }
+      #eight {
+        border-radius: 14px;
+        height: 25px;
+        width: 300px;
+        font-size: 20px;
+        text-align: center;
+      }
 
-              #ninth {
-                  border-radius: 14px;
-                  height: 25px;
-                  width: 200px;
-                  font-size: 20px;
-                  text-align: center;
-              }
+      #ninth {
+        border-radius: 14px;
+        height: 25px;
+        width: 200px;
+        font-size: 20px;
+        text-align: center;
+      }
 
-              #tenth {
-                  border-radius: 14px;
-                  height: 25px;
-                  width: 450px;
-                  font-size: 20px;
-                  text-align: center;
-              }
+      #tenth {
+        border-radius: 14px;
+        height: 25px;
+        width: 450px;
+        font-size: 20px;
+        text-align: center;
+      }
 
-              #eleventh {
-                  border-radius: 14px;
-                  height: 25px;
-                  font-size: 20px;
-                  text-align: center;
-              }
+      #eleventh {
+        border-radius: 14px;
+        height: 25px;
+        font-size: 20px;
+        text-align: center;
+      }
 
-              #twelfth {
-                  border-radius: 14px;
-                  height: 25px;
-                  width: 430px;
-                  font-size: 20px;
-                  text-align: center;
-              }
+      #twelfth {
+        border-radius: 14px;
+        height: 25px;
+        width: 430px;
+        font-size: 20px;
+        text-align: center;
+      }
 
-              #thirteenth {
-                  border-radius: 14px;
-                  height: 25px;
-                  width: 440px;
-                  font-size: 20px;
-                  text-align: center;
-              }
-
-
+      #thirteenth {
+        border-radius: 14px;
+        height: 25px;
+        width: 440px;
+        font-size: 20px;
+        text-align: center;
+      }
 
       /* Submit Button */
       #sub {
-                  width: 120px;
-                  height: 43px;
-                  text-align: center;
-                  border-radius: 14px;
-                  font-size: 18px;
-              }
-
-
-
-
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        width: 120px;
+        height: 43px;
+        text-align: center;
+        border-radius: 14px;
+        font-size: 18px;
+      }
     </style>
   </body>
 </html>
