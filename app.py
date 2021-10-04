@@ -42,7 +42,7 @@ def predict():
 
             values = np.array([[age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal]])
             prediction = model.predict(values)
-
+            print(prediction)    
             return render_template('result.html', prediction=prediction)
     except:
         return render_template('index.html')

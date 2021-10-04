@@ -4,90 +4,100 @@
   <div class="ml-container form-container">
     <form action="{{ url_for('predict') }}" method="POST">
       <br />
-      <div class="filed control">
-        <div class="field control">
-          <lable>Age</lable>
-          <input id="first" name="age" placeholder="in Year" required="required" />
-        </div>
+      <div class="conainer">
+        <div class="row">
+          <div class="field control col">
+            <lable>Age</lable>
+            <input id="first" name="age" placeholder="in Year" required="required" />
+          </div>
 
-        <br />
-        <div class="filed control">
-          <div class="field control">
-
+          <br />
+          <div class="filed control col">
             <lable>Sex</lable>
             <input id="second" name="sex" placeholder="Male = 1, Female=0" required="required" />
           </div>
+
           <br />
-          <div class="filed control">
+          <div class="filed control col">
             <lable>Chest Pain Type</lable>
             <input id="third" name="cp" placeholder="Ex: 1,2,3,4" required="required" />
           </div>
           <br />
 
-          <div class="filed control">
+        </div>
+        <div class="row">
+          <div class="filed control col">
             <lable>Resting Blood Pressure</lable>
             <input id="fourth" name="trestbps" placeholder="(mm)" required="required" />
           </div>
           <br />
-          <div class="filed control">
+          <div class="filed control col">
             <lable>Serum Cholestoral</lable>
             <input id="fifth" name="chol" placeholder="(mg/dl)" required="required" />
           </div>
           <br />
-          <div class="filed control">
+        </div>
+        <div class="row">
+          <div class="filed control col">
             <lable>fasting blood sugar > 120 mg/dl</lable>
             <input id="sixth" name="fbs" placeholder="(1 = true; 0 = false)" required="required" />
           </div>
           <br />
-          <div class="filed control">
-            <lable>Resting Electrocardiographic Results</lable>
+          <div class="filed control col">
+            <lable>Resting ECG Results</lable>
             <input id="seventh" name="restecg" placeholder="(values 0,1,2)" required="required" />
           </div>
           <br />
-          <div class="filed control">
+        </div>
+        <div class="row">
+          <div class="filed control col">
             <lable>Maximum Heart Rate Achieved</lable>
             <input id="eight" name="thalach" placeholder="Maximum Heart Rate Achieved" required="required" />
           </div>
           <br />
-          <div class="filed control">
+          <div class="filed control col">
             <lable>Exercise Induced Angina</lable>
             <input id="ninth" name="exang" placeholder="(1 = yes; 0 = no)" required="required" />
           </div>
           <br />
-          <div class="filed control">
+          <div class="filed control col">
             <lable>Oldpeak</lable>
             <input id="tenth" name="oldpeak" placeholder="ST depression induced by exercise relative to rest"
               required="required" />
           </div>
-          <br />
-          <div class="filed control">
+        </div>
+        <br />
+        <div class="row">
+          <div class="filed control col">
             <lable>Slope</lable>
             <input id="eleventh" name="slope" placeholder="Peak Exercise ST segment" required="required" />
           </div>
           <br />
-          <div class="filed control">
+          <div class="filed control col">
             <lable>CA</lable>
             <input id="twelfth" name="ca" placeholder="No. of major vessels 0-3 colored by flourosopy"
               required="required" />
           </div>
           <br />
-          <div class="filed control">
+          <div class="filed control col">
             <lable>Thal</lable>
             <input id="thirteenth" name="thal" placeholder="0=Normal; 1=FixedDefect; 2=ReversableDefect"
               required="required" />
           </div>
-          <br />
-          <div class="filed control">
-            <button id="sub" type="submit ">Submit</button>
-            <br />
-            <div class="filed control">
-              <center>
-                <footer>
-                  <p class="footer-description">©2021 RR</p>
-                </footer>
-              </center>
-            </div>
+        </div>
+  <br />
+  <div class="filed control">
+    <button id="sub" type="submit ">Submit</button>
+    <br />
+    <div class="filed control">
+      <center>
+        <footer>
+          <p class="footer-description">©2021 RR</p>
+        </footer>
+      </center>
+    </div>
     </form>
-  </div>
+    </div>
+    </div>
 </section>
 {% endblock %}
